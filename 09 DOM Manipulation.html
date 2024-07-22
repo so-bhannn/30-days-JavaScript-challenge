@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .new-class{
+            list-style:circle;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading"></h1>
+    <span class="para">This is a paragraph</span>
+    <ul>
+        <li>This is paragraph 1</li>
+        <li>This is paragraph 2</li>
+    </ul>
+    <img src="bg.jpg">
+    <p>This is a paragraph.</p>
+    <button type="button">Change...</button>
+    <script>
+            //Activity1: Selecting and Manipulating Elements
+            //Task1
+            heading=document.getElementById('heading');
+            heading.textContent='Hello World';
+
+            //Task2
+            para=document.getElementsByClassName('para');
+            var paras = document.getElementsByClassName('para');
+            for (var i = 0; i < paras.length; i++) {
+                paras[i].style.backgroundColor = 'red';
+            }
+
+            //Actvity2:Creating and Appending ELements
+            //Task3
+            var div=document.createElement('div');
+            div.textContent='This is a new div';
+            document.body.appendChild(div);
+
+            //Task4
+            var ul=document.querySelector('ul');
+            var list=document.createElement('li');
+            list.textContent='This is paragraph 3';
+            ul.appendChild(list);
+
+            //Activity3: Removing Elements
+            //Task5
+            var div=document.querySelector('div');
+            document.body.removeChild(div);
+
+            //Task6
+            var ul=document.querySelector('ul');
+            if(ul.lastChild){
+                ul.removeChild(ul.lastChild);
+            }
+
+            //Activity4:Modifying Attributes and Classes
+            //Task7
+            var image=document.querySelector('img');
+            image.setAttribute('src','bg2.jpg');
+
+            //Task8
+            var ul=document.querySelector('ul');
+            ul.classList.add('new-class');
+            ul.classList.remove('new-class');
+
+            //Activity5: Event Handling
+            //Task9
+            button=document.querySelector('button');
+            button.addEventListener('click',()=>{
+                var para=document.querySelector('p');
+                para.textContent='You changed the content!';
+            })
+
+            //Task10
+            button.addEventListener('mouseover',()=>{
+                button.style.borderColor='red';
+            })
+            button.addEventListener('mouseout', () => {
+            button.style.borderColor = 'initial';
+            });
+    </script>
+</body>
+</html>
