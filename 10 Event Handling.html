@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para1">This is a paragraph.</p><br>
+    <button>Change Content</button><br>
+    <img src="picture.png" style="height: 100px; border: 2px solid black;"><br>
+    <div id="div1" style="display:inline">this is a div</div><br>
+    <textarea name="textarea" id="textarea" placeholder="Enter Your text here.." style="height: 130px; width: 300px;"></textarea><br>
+    <input type="text" id="inputfield"placeholder="Click here and then press any key"><br>
+    <p id="print"></p><br>
+    <form action="#" id="my-form">
+        <input type="text" placeholder="enter some data..."><br>
+        <input type="checkbox" name="checkbox" id="checkbox"> Check-Box <br>
+        <input type="button" value="submit">
+    </form><br>
+    <p id="log"></p>
+    <select id="dropdown">Dropdown
+        <option value="Option1">OptionA</option>
+        <option value="Option2">OptionB</option>
+        <option value="Option3">OptionC</option>
+        <option value="Option4">OptionD</option>
+    </select>
+    <p id="selectedValue"></p><br>
+    <ul>
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+        <li>Item4</li>
+    </ul><br>
+    <div id="parent">
+
+    </div>
+    <script>
+    //Activity1: Basic Event Handling
+    //Task1
+    const button=document.querySelector('button');
+    button.addEventListener('click',()=>{
+        const para=document.getElementById('para1');
+        para.textContent='The content of the paragraph is changed.';
+    });
+
+    //Task2
+    const image=document.querySelector('img');
+    image.addEventListener('dblclick',()=>{
+        image.style.visibility='hidden';
+    })
+
+    //Activity2:Mouse Events
+    //Task3
+    const element=document.getElementById("div1");
+    element.addEventListener('mouseover',()=>{
+        element.style.backgroundColor='red';
+    })
+    
+    //Task4
+    element.addEventListener('mouseout',()=>{
+        element.style.backgroundColor='';
+    })
+
+    //Activity3:Keyboard Events
+    //Task5
+    const textarea=document.getElementById("textarea");
+    textarea.addEventListener('keydown',(e)=>{
+        console.log(`Key Pressed: ${e.key}`);
+    })
+
+    //Task6
+    const inputfield=document.getElementById("inputfield");
+    const print=document.getElementById("print");
+
+    inputfield.addEventListener("keyup",(e)=>{
+        print.textContent+=`${e.code}`;
+    })
+
+    //Activity4:Form Events
+    //Task7
+    const myForm=document.getElementById("my-form");
+    myForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+    })
+
+    //Task8
+    const dropdown=document.getElementById("dropdown");
+    const selectedValue=document.getElementById("selectedValue");
+    dropdown.addEventListener('change',(e)=>{
+        selectedValue.textContent=`Selected Value: ${e.target.value}`;
+    });
+
+    //Activity5:Event Delegation
+    //Task9
+    const list=document.querySelectorAll('li');
+    list.forEach(item=>{
+        item.addEventListener('click',(e)=>{
+            console.log(e.target.textContent);
+        })
+    })
+
+    //Task10
+    const parent=document.getElementById('parent');
+    parent.addEventListener('click',(e)=>{
+        if(e.target&& e.target.id==='child'){
+            console.log(`Clicked child element text:${e.target.textContent}`)
+        }
+    });
+    const newChild=document.createElement('div');
+    newChild.textContent='This is dynamically added child';
+    newChild.id='child';
+    parent.append(newChild);
+    </script>
+</body>
+</html>
